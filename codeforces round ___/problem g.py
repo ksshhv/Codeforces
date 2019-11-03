@@ -1,0 +1,61 @@
+x,y,q=input().split()
+x=int(x)
+y=int(y)
+q=int(q)
+m=1
+lis=[[0,0]]
+while(m<=x):
+    a=[0]
+    n=1
+    while(n<=y):
+        a.append(0)
+        n+=1
+    lis.append(a)
+    m+=1
+def change(a1,b1):
+    if(lis[a1][b1]==0):
+        lis[a1][b1]=1
+    else:
+        lis[a1][b1]=0
+#print(lis)
+while(q>0):
+    d,e,f=input().split()
+    d=int(d)
+    e=int(e)
+    f=int(f)
+    z=e
+    while(z<f+1):
+        change(d,z)
+        z+=1
+    #print(lis)
+    x1=1
+    key=0
+    while(x1<x):
+        y1=1
+        while(y1<y):
+            x2=x1+1
+            while(x2<=x):
+                y2=y1+1
+                while(y2<=y):
+                    if(lis[x1][y1]==lis[x2][y2] and lis[x1][y2]==lis[x2][y1] and lis[x1][y1]!=lis[x1][y2]):
+                        if(key==0):
+                            print(str(x1)+" "+str(y1)+" "+str(x2)+" "+str(y2))
+                        key=1
+                        break
+                    y2+=1
+                    if(key==1):
+                        break
+                x2+=1
+                if(key==1):
+                    break
+            y1+=1
+            if(key==1):
+                break
+        x1+=1
+        if(key==1):
+            break
+    if(key==0):
+        print("-1")
+    q-=1
+    
+#print(lis)
